@@ -31,11 +31,12 @@ function loadData() {
         $nytHeaderElem.text('New York Time Articles About ' + city);
 
         articles = data.response.docs;
-        console.log(nytURL)
         for (var i = 0; i < articles.length; i++) {
             var article = articles[i];
             $nytElem.append('<li class="article">' + '<a href="'+article.web_url+'">'+article.headline.main+'</a><p>' + article.snippet + '</p></li>');
         };
+    }).error(function(e) {
+        $nytHeaderElem.text('New York Times Articles Could not be Loaded');
     });
 
 
